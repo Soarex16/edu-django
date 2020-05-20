@@ -1,0 +1,9 @@
+# pyenv
+env/
+
+# Django stuff:
+*.log/
+
+# Byte-compiled / optimized / DLL files
+*/__pycache__/
+*.py[cod]
