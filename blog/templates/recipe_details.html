@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <a href="/">
-        &lt= На главную
-    </a>
+{% block content %}    
+    <div>
+        <a href="{% url 'edit_recipe' recipe_id=recipe.pk %}">
+            Редактировать
+        </a>
+
+        <a href="{% url 'delete_recipe' recipe_id=recipe.pk %}">
+            Удалить
+        </a>
+    </div>
+
     <article>
         <h3>Автор: {{ recipe.author }}</h3>
         <h3>Дата публикации: {{ recipe.published_date }}</h3>

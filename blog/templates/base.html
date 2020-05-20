@@ -7,11 +7,23 @@
     <body>
         <header>
             <hgroup>
-                <h1>Едоблог</h1>
+                <h1>
+                    <a href="/">Едоблог</a>
+                </h1>
                 <h2>{{ title }}</h2>
             </hgroup>
         </header>
         {% block content %}
         {% endblock %}
+        
+        {% if messages %}
+            <div style="position: absolute; top: 0; right: 0; background-color: aqua;">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </body>
 </html>
