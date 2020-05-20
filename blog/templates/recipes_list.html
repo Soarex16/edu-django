@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <a href="recipes/add">
+            Добавить новый рецепт
+        </a>
+
+        <hr/>
+    </div>
+
+    {% for recipe in recipes_list %}
+        <section>
+            <nav>
+                <a href="{% url 'recipe_details' recipe_id=recipe.pk %}">
+                    {{ recipe.recipe_name|upper }}
+                </a>
+                
+                <div>
+                    <a href="{% url 'edit_recipe' recipe_id=recipe.pk %}">
+                        Редактировать
+                    </a>
+    
+                    <a href="{% url 'delete_recipe' recipe_id=recipe.pk %}">
+                        Удалить
+                    </a>
+                </div>
+            <nav>
+            <h4>Автор: {{ recipe.author }}</h4>
+            <h4>Дата публикации: {{ recipe.published_date }}</h4>
+            <p>{{ recipe.description|truncatewords:"100" }}</p>
+        </section>
+        <hr/>
+    {% endfor %}
+{% endblock %}

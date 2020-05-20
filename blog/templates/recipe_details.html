@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/">
+        &lt= На главную
+    </a>
+    <article>
+        <h3>Автор: {{ recipe.author }}</h3>
+        <h3>Дата публикации: {{ recipe.published_date }}</h3>
+        <h3>Время приготовления: {{ recipe.preparation_time }}</h3>
+        <h3>Калорийность: {{ caloricity }} ККал</h3>
+
+        <h2>Ингредиенты</h2>
+        <ul>
+            {% for ingredient in ingredients %}
+                <li>{{ ingredient.ingredient.name }} {{ ingredient.measure }} {{ ingredient.measurement_unit }}</li>
+            {% endfor %}
+        </ul>
+        
+        <p>{{ recipe.description }}</p>
+    </article>
+{% endblock %}
