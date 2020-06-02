@@ -52,12 +52,13 @@ def edit_recipe(request, recipe_id):
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
-            recipe = form.save(commit=False)
-            recipe.author = request.user
+            new_recipe = form.save(commit=False)
+            new_recipe.id = recipe.id
+            new_recipe.author = request.user
             if form.cleaned_data['should_publish']:
-                recipe.published_date = timezone.now()
-            recipe.save()
-            messages.success(request, 'Recipe was successfully edites')
+                new_recipe.published_date = timezone.now()
+            new_recipe.save()
+            messages.success(request, 'Recipe was successfully updated')
             return redirect('recipes_list')
     else:
         form = RecipeForm(initial={'should_publish': recipe.published_date is not None}, instance=recipe)
